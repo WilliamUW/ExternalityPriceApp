@@ -1,19 +1,19 @@
 import React from 'react';
-import {View, SafeAreaView, Image, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import { View, SafeAreaView, Image, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../consts/colors';
 import plants from '../../consts/plants';
 
-const DetailsScreen = ({navigation, route}) => {
+const DetailsScreen = ({ navigation, route }) => {
   const plant = route.params;
 
-  const Card = ({plant}) => {
+  const Card = ({ plant }) => {
     return (
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() => navigation.navigate('Details', plant)}>
         <View style={style.card}>
-          <View style={{alignItems: 'flex-end'}}>
+          <View style={{ alignItems: 'flex-end' }}>
             <View
               style={{
                 width: 30,
@@ -40,11 +40,11 @@ const DetailsScreen = ({navigation, route}) => {
             }}>
             <Image
               source={plant.img}
-              style={{flex: 1, resizeMode: 'contain'}}
+              style={{ flex: 1, resizeMode: 'contain' }}
             />
           </View>
 
-          <Text style={{fontWeight: 'bold', fontSize: 17, marginTop: 10}}>
+          <Text style={{ fontWeight: 'bold', fontSize: 17, marginTop: 10 }}>
             {plant.name}
           </Text>
           <View
@@ -53,7 +53,7 @@ const DetailsScreen = ({navigation, route}) => {
               justifyContent: 'space-between',
               marginTop: 5,
             }}>
-            <Text style={{fontSize: 19, fontWeight: 'bold'}}>
+            <Text style={{ fontSize: 19, fontWeight: 'bold' }}>
               ${plant.price}
             </Text>
             <View
@@ -65,7 +65,7 @@ const DetailsScreen = ({navigation, route}) => {
                 alignItems: 'center',
               }}>
               <Text
-                style={{fontSize: 22, color: COLORS.white, fontWeight: 'bold'}}>
+                style={{ fontSize: 22, color: COLORS.white, fontWeight: 'bold' }}>
                 ${plant.truePrice}
               </Text>
             </View>
@@ -80,116 +80,118 @@ const DetailsScreen = ({navigation, route}) => {
         flex: 1,
         backgroundColor: COLORS.white,
       }}>
-      <View style={style.header}>
-        <Icon name="arrow-back" size={28} onPress={() => navigation.goBack()} />
-        <Icon name="shopping-cart" size={28} />
-      </View>
-      <View style={style.imageContainer}>
-        <Image source={plant.img} style={{resizeMode: 'contain', flex: 1}} />
-      </View>
-      <View style={style.detailsContainer}>
-        <View
-          style={{
-            marginLeft: 20,
-            flexDirection: 'row',
-            alignItems: 'flex-end',
-          }}>
-          <View style={style.line} />
-          <Text style={{fontSize: 18, fontWeight: 'bold'}}>Best choice</Text>
+      <ScrollView>
+        <View style={style.header}>
+          <Icon name="arrow-back" size={28} onPress={() => navigation.goBack()} />
+          <Icon name="shopping-cart" size={28} />
         </View>
-        <View
-          style={{
-            marginLeft: 20,
-            marginTop: 20,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
-          <Text style={{fontSize: 22, fontWeight: 'bold'}}>{plant.name}</Text>
-          <View style={style.salesPriceTag}>
-            <Text
-              style={{
-                marginLeft: 15,
-                color: COLORS.white,
-                fontWeight: 'bold',
-                fontSize: 16,
-              }}>
-              ${plant.price}
-            </Text>
-          </View>
-          <View style={style.priceTag}>
-            <Text
-              style={{
-                marginLeft: 15,
-                color: COLORS.white,
-                fontWeight: 'bold',
-                fontSize: 16,
-              }}>
-              ${plant.truePrice}
-            </Text>
-          </View>
+        <View style={style.imageContainer}>
+          <Image source={plant.img} style={{ resizeMode: 'contain', flex: 1 }} />
         </View>
-        
-        <View style={{paddingHorizontal: 20, marginTop: 10}}>
-          <Text style={{fontSize: 20, fontWeight: 'bold'}}>About</Text>
-          <Text
-            style={{
-              color: 'grey',
-              fontSize: 16,
-              lineHeight: 22,
-              marginTop: 10,
-            }}>
-            {plant.about}
-          </Text>
-          <FlatList
-        columnWrapperStyle={{justifyContent: 'space-between'}}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          marginTop: 10,
-          paddingBottom: 50,
-        }}
-        numColumns={2}
-        data={plants}
-        renderItem={({item}) => {
-          return <Card plant={item} />;
-        }}
-      />
+        <View style={style.detailsContainer}>
           <View
             style={{
+              marginLeft: 20,
+              flexDirection: 'row',
+              alignItems: 'flex-end',
+            }}>
+            <View style={style.line} />
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Best choice</Text>
+          </View>
+          <View
+            style={{
+              marginLeft: 20,
               marginTop: 20,
               flexDirection: 'row',
               justifyContent: 'space-between',
+              alignItems: 'center',
             }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}>
-              <View style={style.borderBtn}>
-                <Text style={style.borderBtnText}>-</Text>
-              </View>
+            <Text style={{ fontSize: 22, fontWeight: 'bold' }}>{plant.name}</Text>
+            <View style={style.salesPriceTag}>
               <Text
                 style={{
-                  fontSize: 20,
-                  marginHorizontal: 10,
+                  marginLeft: 15,
+                  color: COLORS.white,
                   fontWeight: 'bold',
+                  fontSize: 16,
                 }}>
-                1
+                ${plant.price}
               </Text>
-              <View style={style.borderBtn}>
-                <Text style={style.borderBtnText}>+</Text>
-              </View>
             </View>
-
-            <View style={style.buyBtn}>
+            <View style={style.priceTag}>
               <Text
-                style={{color: COLORS.white, fontSize: 18, fontWeight: 'bold'}}>
-                Buy
+                style={{
+                  marginLeft: 15,
+                  color: COLORS.white,
+                  fontWeight: 'bold',
+                  fontSize: 16,
+                }}>
+                ${plant.truePrice}
               </Text>
             </View>
           </View>
+
+          <View style={{ paddingHorizontal: 20, marginTop: 10 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>About</Text>
+            <Text
+              style={{
+                color: 'grey',
+                fontSize: 16,
+                lineHeight: 22,
+                marginTop: 10,
+              }}>
+              {plant.about}
+            </Text>
+            <FlatList
+              columnWrapperStyle={{ justifyContent: 'space-between' }}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{
+                marginTop: 10,
+                paddingBottom: 50,
+              }}
+              numColumns={2}
+              data={plant.externalities}
+              renderItem={({ item }) => {
+                return <Card plant={item} />;
+              }}
+            />
+            <View
+              style={{
+                marginTop: 20,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+              }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}>
+                <View style={style.borderBtn}>
+                  <Text style={style.borderBtnText}>-</Text>
+                </View>
+                <Text
+                  style={{
+                    fontSize: 20,
+                    marginHorizontal: 10,
+                    fontWeight: 'bold',
+                  }}>
+                  1
+                </Text>
+                <View style={style.borderBtn}>
+                  <Text style={style.borderBtnText}>+</Text>
+                </View>
+              </View>
+
+              <View style={style.buyBtn}>
+                <Text
+                  style={{ color: COLORS.white, fontSize: 18, fontWeight: 'bold' }}>
+                  Buy
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -232,7 +234,7 @@ const style = StyleSheet.create({
     width: 60,
     height: 40,
   },
-  borderBtnText: {fontWeight: 'bold', fontSize: 28},
+  borderBtnText: { fontWeight: 'bold', fontSize: 28 },
   buyBtn: {
     width: 130,
     height: 50,
