@@ -7,26 +7,36 @@ import plants from '../../consts/plants';
 const DetailsScreen = ({ navigation, route }) => {
   const plant = route.params;
 
+  let externalCost = 0;
+    for (const x in plant.externalities) { // get total external cost
+      // console.log(x);
+      if (x) {
+        externalCost += (plant.externalities[x].price);
+      }
+    }
+let truePrice = parseFloat(plant.price) + externalCost;
+
   const Card = ({ plant }) => {
+    
     return (
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() => navigation.navigate('Externality', plant)}>
         <View style={style.card}>
-          
 
-          
 
-          
+
+
+
           <View
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
               marginTop: 5,
             }}>
-           <Text style={{  fontSize: 20}}>
-            {plant.name}
-          </Text>
+            <Text style={{ fontSize: 20 }}>
+              {plant.name}
+            </Text>
             <View
               style={{
                 height: 25,
@@ -40,7 +50,7 @@ const DetailsScreen = ({ navigation, route }) => {
                 ${plant.price}
               </Text>
             </View>
-            
+
           </View>
         </View>
       </TouchableOpacity>
@@ -79,7 +89,7 @@ const DetailsScreen = ({ navigation, route }) => {
               alignItems: 'center',
             }}>
             <Text style={{ fontSize: 22, fontWeight: 'bold' }}>{plant.name}</Text>
-            <View style={style.salesPriceTag}>
+            {/* <View style={style.salesPriceTag}>
               <Text
                 style={{
                   marginLeft: 15,
@@ -89,7 +99,7 @@ const DetailsScreen = ({ navigation, route }) => {
                 }}>
                 ${plant.price}
               </Text>
-            </View>
+            </View> */}
             <View style={style.priceTag}>
               <Text
                 style={{
@@ -98,7 +108,7 @@ const DetailsScreen = ({ navigation, route }) => {
                   fontWeight: 'bold',
                   fontSize: 16,
                 }}>
-                ${plant.truePrice}
+                ${truePrice}
               </Text>
             </View>
           </View>
@@ -116,6 +126,7 @@ const DetailsScreen = ({ navigation, route }) => {
             </Text>
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}></Text>
 
+{plant.externalities ? <>
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Externalities</Text>
 
             <FlatList
@@ -130,6 +141,12 @@ const DetailsScreen = ({ navigation, route }) => {
                 return <Card plant={item} />;
               }}
             />
+            </> : null}
+            
+            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Total External Cost: ${externalCost}</Text>
+            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Sales Price: ${plant.price}</Text>
+            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>True Price: ${truePrice}</Text>
+
             <View
               style={{
                 marginTop: 20,

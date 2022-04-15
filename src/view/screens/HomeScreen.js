@@ -18,6 +18,7 @@ const width = Dimensions.get('window').width / 2 - 30;
 const HomeScreen = ({navigation}) => {
   const [catergoryIndex, setCategoryIndex] = React.useState(0);
 
+
   const categories = ['POPULAR', 'ORGANIC', 'INDOORS', 'SYNTHETIC'];
 
   const CategoryList = () => {
@@ -42,6 +43,15 @@ const HomeScreen = ({navigation}) => {
   };
 
   const Card = ({plant}) => {
+    let externalCost = 0;
+    for (const x in plant.externalities) { // get total external cost
+      // console.log(x);
+      if (x) {
+      externalCost += (plant.externalities[x].price);
+      }
+    }
+
+
     return (
       <TouchableOpacity
         activeOpacity={0.8}
@@ -100,7 +110,7 @@ const HomeScreen = ({navigation}) => {
               }}>
               <Text
                 style={{fontSize: 22, color: COLORS.white, fontWeight: 'bold'}}>
-                ${plant.truePrice}
+                ${externalCost}
               </Text>
             </View>
           </View>

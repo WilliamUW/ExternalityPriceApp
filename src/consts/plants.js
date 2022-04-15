@@ -1,9 +1,9 @@
 const plants = [
   {
     id: 1,
-    name: 'Succulent Plant',
-    price: '39.99',
-    truePrice: '49.99',
+    name: 'LG Television',
+    price: '139.99',
+    truePrice: '249.99',
 
     like: true,
     img: require('../assets/plant1.png'),
@@ -13,7 +13,7 @@ const plants = [
       {
         id: 1,
         name: 'Environmental Pollution',
-        price: '19.99',
+        price: 19.99,
 
         like: true,
         img: require('../assets/plant1.png'),
@@ -24,7 +24,7 @@ const plants = [
       {
         id: 2,
         name: 'Child Labour',
-        price: '19.99',
+        price: 19.99,
 
         like: true,
         img: require('../assets/plant1.png'),
