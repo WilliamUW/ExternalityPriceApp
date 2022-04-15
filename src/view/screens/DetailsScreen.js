@@ -11,45 +11,43 @@ const DetailsScreen = ({ navigation, route }) => {
   let truePrice = plant.truePrice;
 
   const Card = ({ plant }) => {
-
-    return (
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => navigation.navigate('Externality', plant)}>
-        <View style={style.card}>
-
-
-
-
-
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginTop: 5,
-            }}>
-            <Text style={{ fontSize: 20 }}>
-              {plant.name}
-            </Text>
+    console.log(plant)
+    if (plant) {
+      return (
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => navigation.navigate('Externality', plant)}>
+          <View style={style.card}>
             <View
               style={{
-                height: 25,
-                backgroundColor: COLORS.green,
-                borderRadius: 5,
-                justifyContent: 'center',
-                alignItems: 'center',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginTop: 5,
               }}>
-              <Text
-                style={{ fontSize: 22, color: COLORS.white, fontWeight: 'bold' }}>
-                ${plant.price}
+              <Text style={{ fontSize: 20 }}>
+                {plant.name}
               </Text>
-            </View>
+              <View
+                style={{
+                  height: 25,
+                  backgroundColor: COLORS.green,
+                  borderRadius: 5,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Text
+                  style={{ fontSize: 22, color: COLORS.white, fontWeight: 'bold' }}>
+                  ${plant.price}
+                </Text>
+              </View>
 
+            </View>
           </View>
-        </View>
-      </TouchableOpacity>
-    );
+        </TouchableOpacity>
+      );
+    }
   };
+
   return (
     <SafeAreaView
       style={{
@@ -135,7 +133,37 @@ const DetailsScreen = ({ navigation, route }) => {
                   return <Card plant={item} />;
                 }}
               />
-              
+              <View style={style.card}>
+
+
+
+
+
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    marginTop: 5,
+                  }}>
+                  <Text style={{ fontSize: 20 }}>
+                    {plant.name}
+                  </Text>
+                  <View
+                    style={{
+                      height: 25,
+                      backgroundColor: COLORS.green,
+                      borderRadius: 5,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}>
+                    <Text
+                      style={{ fontSize: 22, color: COLORS.white, fontWeight: 'bold' }}>
+                      ${plant.price}
+                    </Text>
+                  </View>
+
+                </View>
+              </View>
             </> : null}
 
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Total External Cost: ${externalCost}</Text>
@@ -184,6 +212,14 @@ const DetailsScreen = ({ navigation, route }) => {
 };
 
 const style = StyleSheet.create({
+  card: {
+    height: 225,
+    backgroundColor: COLORS.light,
+    marginHorizontal: 2,
+    borderRadius: 10,
+    marginBottom: 20,
+    padding: 15,
+  },
   header: {
     paddingHorizontal: 20,
     marginTop: 20,
