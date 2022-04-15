@@ -128,7 +128,7 @@ const HomeScreen = ({navigation}) => {
         <ScrollView>
       <View style={style.header}>
         <View>
-          <Text style={{fontSize: 25, fontWeight: 'bold'}}>Welcome to</Text>
+          <Text style={{fontSize: 25, fontWeight: 'bold'}}>Welcome to the Future of</Text>
           <Text style={{fontSize: 38, color: COLORS.green, fontWeight: 'bold'}}>
 Sustainable Pricing</Text>
         </View>
