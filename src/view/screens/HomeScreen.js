@@ -7,6 +7,7 @@ import {
   FlatList,
   Image,
   Dimensions,
+  ScrollView
 } from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -110,6 +111,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView
       style={{flex: 1, paddingHorizontal: 20, backgroundColor: COLORS.white}}>
+        <ScrollView>
       <View style={style.header}>
         <View>
           <Text style={{fontSize: 25, fontWeight: 'bold'}}>Welcome to</Text>
@@ -141,6 +143,7 @@ Sustainable Pricing</Text>
           return <Card plant={item} />;
         }}
       />
+      </ScrollView>
     </SafeAreaView>
   );
 };

@@ -49,6 +49,8 @@ const plants = [
     id: 5,
     name: 'Ravenea Plant',
     price: '50.99',
+    truePrice: '49.99',
+
     like: true,
     img: require('../assets/plant5.png'),
     about:
@@ -58,6 +60,8 @@ const plants = [
     id: 6,
     name: 'Dragon Plant',
     price: '50.99',
+    truePrice: '49.99',
+
     like: false,
     img: require('../assets/plant6.png'),
     about:
@@ -113,6 +117,8 @@ const plants = [
     id: 11,
     name: 'Ravenea Plant',
     price: '50.99',
+    truePrice: '49.99',
+
     like: true,
     img: require('../assets/plant5.png'),
     about:
@@ -122,6 +128,8 @@ const plants = [
     id: 12,
     name: 'Dragon Plant',
     price: '50.99',
+    truePrice: '49.99',
+
     like: false,
     img: require('../assets/plant6.png'),
     about:
