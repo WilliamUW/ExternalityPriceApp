@@ -125,7 +125,6 @@ const DetailsScreen = ({ navigation, route }) => {
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{
                   marginTop: 10,
-                  paddingBottom: 50,
                 }}
                 numColumns={1}
                 data={plant.externalities}
@@ -133,42 +132,85 @@ const DetailsScreen = ({ navigation, route }) => {
                   return <Card plant={item} />;
                 }}
               />
-              <View style={style.card}>
-
-
-
-
-
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    marginTop: 5,
-                  }}>
-                  <Text style={{ fontSize: 20 }}>
-                    {plant.name}
-                  </Text>
-                  <View
-                    style={{
-                      height: 25,
-                      backgroundColor: COLORS.green,
-                      borderRadius: 5,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}>
-                    <Text
-                      style={{ fontSize: 22, color: COLORS.white, fontWeight: 'bold' }}>
-                      ${plant.price}
-                    </Text>
-                  </View>
-
-                </View>
-              </View>
+              
             </> : null}
+            <View style={style.card}>
 
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Total External Cost: ${externalCost}</Text>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Sales Price: ${plant.price}</Text>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>True Price: ${truePrice}</Text>
+
+
+
+
+<View
+  style={{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 5,
+  }}>
+  <Text style={{  fontSize: 20, fontWeight: 'bold' }}>
+  Total External Cost:  </Text>
+  <View
+    style={{
+      height: 25,
+      backgroundColor: COLORS.green,
+      borderRadius: 5,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
+    <Text
+      style={{ fontSize: 22, color: COLORS.white, fontWeight: 'bold' }}>
+${externalCost}</Text>
+  </View>
+
+</View>
+<View
+  style={{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 5,
+  }}>
+  <Text style={{  fontSize: 20, fontWeight: 'bold' }}>
+  Sales Price:  </Text>
+  <View
+    style={{
+      height: 25,
+      backgroundColor: COLORS.green,
+      borderRadius: 5,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
+    <Text
+      style={{ fontSize: 22, color: COLORS.white, fontWeight: 'bold' }}>
+${plant.price}</Text>
+  </View>
+
+</View>
+<View
+  style={{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 5,
+  }}>
+  <Text style={{  fontSize: 20, fontWeight: 'bold' }}>
+  True Price:  </Text>
+  <View
+    style={{
+      height: 25,
+      backgroundColor: COLORS.green,
+      borderRadius: 5,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
+    <Text
+      style={{ fontSize: 22, color: COLORS.white, fontWeight: 'bold' }}>
+${truePrice}</Text>
+  </View>
+
+</View>
+
+</View>
+            {/* <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Total External Cost: ${externalCost}</Text> */}
+            {/* <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Sales Price: ${plant.price}</Text>
+            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>True Price: ${truePrice}</Text> */}
 
             <View
               style={{
@@ -212,14 +254,6 @@ const DetailsScreen = ({ navigation, route }) => {
 };
 
 const style = StyleSheet.create({
-  card: {
-    height: 225,
-    backgroundColor: COLORS.light,
-    marginHorizontal: 2,
-    borderRadius: 10,
-    marginBottom: 20,
-    padding: 15,
-  },
   header: {
     paddingHorizontal: 20,
     marginTop: 20,
