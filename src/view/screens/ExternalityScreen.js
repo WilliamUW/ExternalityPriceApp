@@ -13,7 +13,6 @@ const ExternalityScreen = ({ navigation, route }) => {
         flex: 1,
         backgroundColor: COLORS.white,
       }}>
-      <ScrollView>
         <View style={style.header}>
           <Icon name="arrow-back" size={28} onPress={() => navigation.goBack()} />
           <Icon name="shopping-cart" size={28} />
@@ -112,7 +111,6 @@ const ExternalityScreen = ({ navigation, route }) => {
             </View>
           </View>
         </View>
-      </ScrollView>
     </SafeAreaView>
   );
 };

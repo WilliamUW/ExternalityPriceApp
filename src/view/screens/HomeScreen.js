@@ -50,7 +50,11 @@ const HomeScreen = ({navigation}) => {
       externalCost += (plant.externalities[x].price);
       }
     }
+    plant.externalCost = externalCost;
+    let truePrice = parseFloat(plant.price) + externalCost;
+    truePrice.toFixed(2);
 
+    plant.truePrice = truePrice;
 
     return (
       <TouchableOpacity
@@ -110,7 +114,7 @@ const HomeScreen = ({navigation}) => {
               }}>
               <Text
                 style={{fontSize: 22, color: COLORS.white, fontWeight: 'bold'}}>
-                ${externalCost}
+                ${truePrice}
               </Text>
             </View>
           </View>

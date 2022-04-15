@@ -7,17 +7,11 @@ import plants from '../../consts/plants';
 const DetailsScreen = ({ navigation, route }) => {
   const plant = route.params;
 
-  let externalCost = 0;
-    for (const x in plant.externalities) { // get total external cost
-      // console.log(x);
-      if (x) {
-        externalCost += (plant.externalities[x].price);
-      }
-    }
-let truePrice = parseFloat(plant.price) + externalCost;
+  let externalCost = plant.externalCost
+  let truePrice = plant.truePrice;
 
   const Card = ({ plant }) => {
-    
+
     return (
       <TouchableOpacity
         activeOpacity={0.8}
@@ -126,23 +120,24 @@ let truePrice = parseFloat(plant.price) + externalCost;
             </Text>
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}></Text>
 
-{plant.externalities ? <>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Externalities</Text>
+            {plant.externalities ? <>
+              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Externalities</Text>
 
-            <FlatList
-              showsVerticalScrollIndicator={false}
-              contentContainerStyle={{
-                marginTop: 10,
-                paddingBottom: 50,
-              }}
-              numColumns={1}
-              data={plant.externalities}
-              renderItem={({ item }) => {
-                return <Card plant={item} />;
-              }}
-            />
+              <FlatList
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{
+                  marginTop: 10,
+                  paddingBottom: 50,
+                }}
+                numColumns={1}
+                data={plant.externalities}
+                renderItem={({ item }) => {
+                  return <Card plant={item} />;
+                }}
+              />
+              
             </> : null}
-            
+
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Total External Cost: ${externalCost}</Text>
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Sales Price: ${plant.price}</Text>
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>True Price: ${truePrice}</Text>
