@@ -15,6 +15,7 @@ import COLORS from '../../consts/colors';
 import plants from '../../consts/plants';
 const width = Dimensions.get('window').width / 2 - 30;
 
+// Home screen that displays all the items
 const HomeScreen = ({navigation}) => {
   const [catergoryIndex, setCategoryIndex] = React.useState(0);
 

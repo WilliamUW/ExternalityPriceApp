@@ -4,8 +4,37 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../consts/colors';
 import plants from '../../consts/plants';
 
+const externalityList = ['Environmental Pollution', 'Child Labour']
+const externalityImageLocation = ['../../assets/environmental_pollution.jpg', '../../assets/child_labour.jpg']
+
+const externalityImages = [require('../../assets/environmental_pollution.jpg'), require('../../assets/child_labour.jpg')]
+const externalityDescription = [
+  "The market impacts of outdoor air pollution, which include impacts on labour productivity, health expenditures and agricultural crop yields, are projected to lead to global economic costs that gradually increase to 1% of global GDP by 2060.",
+
+  "1. By interfering with the accumulation of human capital, child labour reduces the adulthood labour market productivity of child workers, thereby discouraging economic growth and development. 2. By depressing adult wages, child labour results in households becoming more reliant on children as income earning assets."
+]
+
+// Screen that displays externality details
 const ExternalityScreen = ({ navigation, route }) => {
   const plant = route.params;
+
+  let currentExternality = plant.name;
+  console.log(currentExternality);
+
+  let index = externalityList.indexOf(currentExternality);
+  console.log(index);
+  console.log(plant.img, "image location");
+  console.log(externalityImages[0]);
+
+  let img = externalityImages[0];
+  if (index >= 0) {
+    img = externalityImages[index];
+  }
+
+  let description = externalityDescription[0];
+  if (index >= 0) {
+    description = externalityDescription[index];
+  }
 
   return (
     <SafeAreaView
@@ -19,7 +48,7 @@ const ExternalityScreen = ({ navigation, route }) => {
           <Icon name="shopping-cart" size={28} />
         </View>
         <View style={style.imageContainer}>
-          <Image source={plant.img} style={{ resizeMode: 'contain', flex: 1 }} />
+          <Image source={img} style={{ resizeMode: 'contain', flex: 1 }} />
         </View>
         <View style={style.detailsContainer}>
           <View
@@ -28,8 +57,7 @@ const ExternalityScreen = ({ navigation, route }) => {
               flexDirection: 'row',
               alignItems: 'flex-end',
             }}>
-            <View style={style.line} />
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Best choice</Text>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Externality</Text>
           </View>
           <View
             style={{
@@ -73,7 +101,7 @@ const ExternalityScreen = ({ navigation, route }) => {
                 lineHeight: 22,
                 marginTop: 10,
               }}>
-              {plant.about}
+              {description}
             </Text>
 
             <View
