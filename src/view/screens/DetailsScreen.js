@@ -61,7 +61,7 @@ const DetailsScreen = ({ navigation, route }) => {
           <Icon name="shopping-cart" size={28} />
         </View>
         <View style={style.imageContainer}>
-          <Image source={plant.img} style={{ resizeMode: 'contain', flex: 1 }} />
+          <Image source={plant.img} style={{ resizeMode: 'contain', flex: 1, maxWidth: '100%' }} />
         </View>
         <View style={style.detailsContainer}>
           <View
@@ -69,9 +69,9 @@ const DetailsScreen = ({ navigation, route }) => {
               marginLeft: 20,
               flexDirection: 'row',
               alignItems: 'flex-end',
+              justifyContent: 'center'
             }}>
-            <View style={style.line} />
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Best choice</Text>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Current Item Description</Text>
           </View>
           <View
             style={{
