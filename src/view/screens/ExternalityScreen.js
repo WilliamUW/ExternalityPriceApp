@@ -36,6 +36,8 @@ const ExternalityScreen = ({ navigation, route }) => {
     description = externalityDescription[index];
   }
 
+  let costToSociety = (plant.price >= 0);
+
   return (
     <SafeAreaView
       style={{
@@ -48,7 +50,7 @@ const ExternalityScreen = ({ navigation, route }) => {
           <Icon name="shopping-cart" size={28} />
         </View>
         <View style={style.imageContainer}>
-          <Image source={img} style={{ resizeMode: 'contain', flex: 1 }} />
+          <Image source={img} style={{ resizeMode: 'contain', flex: 1}} />
         </View>
         <View style={style.detailsContainer}>
           <View
@@ -56,8 +58,9 @@ const ExternalityScreen = ({ navigation, route }) => {
               marginLeft: 20,
               flexDirection: 'row',
               alignItems: 'flex-end',
+              justifyContent: 'center'
             }}>
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Externality</Text>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Current Externality</Text>
           </View>
           <View
             style={{
@@ -68,7 +71,7 @@ const ExternalityScreen = ({ navigation, route }) => {
               alignItems: 'center',
             }}>
             <Text style={{ fontSize: 22, fontWeight: 'bold' }}>{plant.name}</Text>
-            <View style={style.salesPriceTag}>
+            <View style={costToSociety ? style.salesPriceTag : style.priceTag}>
               <Text
                 style={{
                   marginLeft: 15,
@@ -77,17 +80,6 @@ const ExternalityScreen = ({ navigation, route }) => {
                   fontSize: 16,
                 }}>
                 ${plant.price}
-              </Text>
-            </View>
-            <View style={style.priceTag}>
-              <Text
-                style={{
-                  marginLeft: 15,
-                  color: COLORS.white,
-                  fontWeight: 'bold',
-                  fontSize: 16,
-                }}>
-                ${plant.truePrice}
               </Text>
             </View>
           </View>
@@ -207,8 +199,6 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     borderTopLeftRadius: 25,
     borderBottomLeftRadius: 25,
-    borderTopRightRadius: 25,
-    borderBottomRightRadius: 25,
   },
 });
 
