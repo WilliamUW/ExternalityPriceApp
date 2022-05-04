@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../consts/colors';
 import plants from '../../consts/plants';
 
+// Screen with details about every item
 const DetailsScreen = ({ navigation, route }) => {
   const plant = route.params;
 
