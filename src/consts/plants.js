@@ -6,7 +6,7 @@ const plants = [
     truePrice: '249.99',
 
     like: true,
-    img: require('../assets/plant1.png'),
+    img: require('../assets/lgtv.png'),
     about:
       'Succulent Plantis one of the most popular and beautiful species that will produce clumpms. The storage of water often gives succulent plants a more swollen or fleshy appearance than other plants, a characteristic known as succulence.',
     externalities: [
